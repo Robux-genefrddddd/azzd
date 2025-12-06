@@ -11,7 +11,7 @@ export const handleAIChat: RequestHandler = async (req, res) => {
       idToken,
       userMessage,
       conversationHistory = [],
-      model = "x-ai/grok-4.1-fast:free",
+      model = "amazon/nova-2-lite-v1:free",
       temperature = 0.7,
       maxTokens = 2048,
     } = validated;
