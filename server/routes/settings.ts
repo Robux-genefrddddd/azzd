@@ -7,7 +7,7 @@ export const handleGetAIConfig: RequestHandler = async (req, res) => {
 
     if (!db) {
       return res.json({
-        model: "x-ai/grok-4.1-fast:free",
+        model: "amazon/nova-2-lite-v1:free",
         temperature: 0.7,
         maxTokens: 2048,
       });
@@ -18,7 +18,7 @@ export const handleGetAIConfig: RequestHandler = async (req, res) => {
     const config = configSnap.exists
       ? configSnap.data()
       : {
-          model: "x-ai/grok-4.1-fast:free",
+          model: "amazon/nova-2-lite-v1:free",
           temperature: 0.7,
           maxTokens: 2048,
         };
@@ -27,7 +27,7 @@ export const handleGetAIConfig: RequestHandler = async (req, res) => {
   } catch (error) {
     console.error("Error getting AI config:", error);
     return res.json({
-      model: "x-ai/grok-4.1-fast:free",
+      model: "amazon/nova-2-lite-v1:free",
       temperature: 0.7,
       maxTokens: 2048,
     });
