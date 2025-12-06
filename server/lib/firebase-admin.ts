@@ -32,7 +32,13 @@ export function initializeFirebaseAdmin() {
       const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
       const clientId = process.env.FIREBASE_CLIENT_ID;
 
-      if (!projectId || !privateKeyId || !privateKey || !clientEmail || !clientId) {
+      if (
+        !projectId ||
+        !privateKeyId ||
+        !privateKey ||
+        !clientEmail ||
+        !clientId
+      ) {
         console.error(
           "CRITICAL: Firebase service account credentials not configured.",
         );
