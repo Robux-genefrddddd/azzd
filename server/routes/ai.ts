@@ -108,6 +108,7 @@ export const handleAIChat: RequestHandler = async (req, res) => {
 
     // Validate model is allowed
     const allowedModels = [
+      "amazon/nova-2-lite-v1:free",
       "x-ai/grok-4.1-fast:free",
       "gpt-4",
       "gpt-3.5-turbo",
