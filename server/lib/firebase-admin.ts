@@ -12,8 +12,11 @@ export function initializeFirebaseAdmin() {
   try {
     const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
     if (!serviceAccountKey) {
-      console.warn(
-        "FIREBASE_SERVICE_ACCOUNT_KEY not set. Admin operations disabled.",
+      console.error(
+        "CRITICAL: FIREBASE_SERVICE_ACCOUNT_KEY not set. Firebase Admin SDK cannot initialize. AI chat and admin operations will fail.",
+      );
+      console.error(
+        "Please set FIREBASE_SERVICE_ACCOUNT_KEY environment variable with your Firebase service account JSON.",
       );
       return;
     }
