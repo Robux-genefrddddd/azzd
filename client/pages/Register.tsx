@@ -433,6 +433,30 @@ export default function Register() {
               </p>
             </div>
 
+            {/* TOS Acceptance Checkbox */}
+            <div className="flex items-start gap-3 py-2">
+              <input
+                type="checkbox"
+                id="tos-checkbox"
+                checked={tosAccepted}
+                onChange={(e) => setTosAccepted(e.target.checked)}
+                className="w-5 h-5 mt-0.5 rounded cursor-pointer accent-blue-500"
+              />
+              <label
+                htmlFor="tos-checkbox"
+                className="text-xs text-gray-400 cursor-pointer flex-1 leading-relaxed"
+              >
+                J'accepte les{" "}
+                <span className="text-blue-400 hover:text-blue-300">
+                  conditions d'utilisation
+                </span>{" "}
+                et la{" "}
+                <span className="text-blue-400 hover:text-blue-300">
+                  politique de confidentialité
+                </span>
+              </label>
+            </div>
+
             {/* Register Button - SaaS Pro Style */}
             <button
               type="submit"
