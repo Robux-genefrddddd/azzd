@@ -134,7 +134,7 @@ export default function AdminStats() {
         />
         <StatCard
           title="Administrateurs"
-          value={stats.totalAdmins}
+          value={stats.adminUsers}
           lastUpdated="Mise à jour en temps réel"
         />
         <StatCard
