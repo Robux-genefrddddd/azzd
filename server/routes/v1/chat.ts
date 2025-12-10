@@ -111,6 +111,7 @@ export const handleSendMessage: RequestHandler = async (req, res) => {
     );
 
     // Call OpenRouter API
+    const ENV = getEnv();
     const apiKey = ENV.openrouter.apiKey;
 
     if (!apiKey || apiKey === "your-openrouter-key-here") {
