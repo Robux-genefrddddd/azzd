@@ -83,6 +83,7 @@ export function createServer() {
 
   // Admin routes
   apiRouter.post("/admin/users", adminRoutes.handleGetAllUsers);
+  apiRouter.get("/admin/users", adminRoutes.handleGetAllUsers);
   apiRouter.post("/admin/ban", adminRoutes.handleBanUser);
   apiRouter.post("/admin/unban", adminRoutes.handleUnbanUser);
   apiRouter.post("/admin/promote", adminRoutes.handlePromoteToAdmin);
@@ -90,13 +91,32 @@ export function createServer() {
   apiRouter.post("/admin/reset-messages", adminRoutes.handleResetMessages);
   apiRouter.post("/admin/update-plan", adminRoutes.handleUpdateUserPlan);
   apiRouter.post("/admin/ai-config", adminRoutes.handleGetAIConfig);
+  apiRouter.get("/admin/ai-config", adminRoutes.handleGetAIConfig);
   apiRouter.put("/admin/ai-config", adminRoutes.handleUpdateAIConfig);
   apiRouter.post("/admin/maintenance", adminRoutes.handleGetMaintenanceStatus);
+  apiRouter.get("/admin/maintenance", adminRoutes.handleGetMaintenanceStatus);
   apiRouter.post("/admin/maintenance/enable", adminRoutes.handleEnableMaintenance);
   apiRouter.post("/admin/maintenance/disable", adminRoutes.handleDisableMaintenance);
   apiRouter.post("/admin/logs", adminRoutes.handleGetAdminLogs);
   apiRouter.post("/admin/logs/clear", adminRoutes.handleClearOldLogs);
   apiRouter.post("/admin/stats", adminRoutes.handleGetStats);
+  apiRouter.get("/admin/stats", adminRoutes.handleGetStats);
+
+  // BACKWARD COMPATIBILITY ROUTES (map old paths to new ones)
+  // These keep the frontend working without modifications
+  apiRouter.post("/ai/chat", chatRoutes.handleSendMessage);
+  apiRouter.get("/ai/config", adminRoutes.handleGetAIConfig);
+  apiRouter.put("/ai/config", adminRoutes.handleUpdateAIConfig);
+  apiRouter.post("/activate-license", licenseRoutes.handleActivateLicense);
+  apiRouter.post("/daily-reset", (req, res) => {
+    // Daily reset is now automatic - just return success
+    res.json({
+      success: true,
+      message: "Daily reset check completed",
+    });
+  });
+  apiRouter.post("/admin/system-stats", adminRoutes.handleGetStats);
+  apiRouter.get("/admin/system-stats", adminRoutes.handleGetStats);
 
   // Mount API router
   app.use("/api", apiRouter);
